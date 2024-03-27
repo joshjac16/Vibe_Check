@@ -10,8 +10,23 @@ router.post('/', async (req, res) => {
       password: req.body.password,
     });
 
+    const userData = await User.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+
+    if(!userData) {
+      res
+        .status(400)
+        .json({ message: '' });
+      return;
+    }
+    const userId = await userData.getId();
+
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.userId = userId;
 
       res.status(200).json(dbUserData);
     });
@@ -38,6 +53,7 @@ router.post('/login', async (req, res) => {
     }
 
     const validPassword = await dbUserData.checkPassword(req.body.password);
+    const userId = await dbUserData.getId();
 
     if (!validPassword) {
       res
@@ -48,7 +64,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
-
+      req.session.userId = userId;
       res
         .status(200)
         .json({ user: dbUserData, message: 'You are now logged in!' });
