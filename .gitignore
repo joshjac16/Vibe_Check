@@ -132,3 +132,8 @@ dist
 hidden/
 
 .DS_Store
+
+/.eslintignore
+/.eslintrc.json
+/.prettierignore
+/.prettierrc.json
