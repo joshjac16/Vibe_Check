@@ -2,6 +2,8 @@ const passwordInput = document.querySelector('.pass-field input');
 const eyeIcon = document.querySelector('.pass-field i');
 const requirementList = document.querySelectorAll('.requirement-list li');
 const signupBtn = document.querySelector('#signup-button');
+const loginPasswordInput = document.querySelector('.login-pass-field');
+const loginEmailInput = document.querySelector('.login-user-field');
 
 // An array of password requirements with corresponding
 // regular expressions and index of the requirement list item
