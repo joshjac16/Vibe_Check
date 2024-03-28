@@ -13,32 +13,32 @@ router.get('/', async (req, res) => {
   }
 });
 
-// router.get('/playlist/:id', withAuth, async (req, res) => {
-//   try {
-//     const dbPlaylistData = await Playlist.findAll({
-//       where: {
-//         user_id: req.session.userId,
-//       },
-//       include: [
-//         {
-//           model: Playlist,
-//           attributes: ['title', 'description'],
-//         },
-//       ],
-//     });
+router.get('/playlists', withAuth, async (req, res) => {
+  try {
+    const dbPlaylistData = await Playlist.findAll({
+      where: {
+        user_id: req.session.userId,
+      },
+      include: [
+        {
+          model: Playlist,
+          attributes: ['title'],
+        },
+      ],
+    });
 
-//     const galleries = dbGalleryData.map((gallery) =>
-//       gallery.get({ plain: true })
-//     );
+    const playlists = dbPlaylistData.map((playlists) =>
+      playlists.get({ plain: true })
+    );
 
-//     res.render('homepage', {
-//       galleries,
-//       loggedIn: req.session.loggedIn,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// })
+    res.render('homepage', {
+      playlists,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
 
 module.exports = router;
