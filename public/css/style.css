@@ -136,6 +136,38 @@ body {
   color: #999;
 }
 
+/* button shimmer */
+.shimmering-button {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  color: #fff;
+  margin-top: 5px;
+}
+
+.shimmering-button {
+  background-color: limegreen;
+  background-image: linear-gradient(
+    -60deg,
+    transparent 0%,
+    transparent 40%,
+    #ffffff44 40%,
+    #ffffff44 60%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+}
+.shimmering-button {
+  background-position-x: 150%;
+}
+
+.shimmering-button:hover {
+  background-position-x: -150%;
+  transition: background-position-x 1000ms;
+}
+
 @media screen and (max-width: 500px) {
   body,
   .wrapper {
