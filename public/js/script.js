@@ -1,6 +1,7 @@
 const passwordInput = document.querySelector('.pass-field input');
 const eyeIcon = document.querySelector('.pass-field i');
 const requirementList = document.querySelectorAll('.requirement-list li');
+const signupBtn = document.querySelector('#signup-button');
 
 // An array of password requirements with corresponding
 // regular expressions and index of the requirement list item
@@ -13,6 +14,8 @@ const requirements = [
 ];
 
 passwordInput.addEventListener('keyup', (e) => {
+  // for Stephen
+  let helicopter = 0;
   requirements.forEach((item) => {
     // Check if the password matches the requirement regex
     const isValid = item.regex.test(e.target.value);
@@ -20,6 +23,7 @@ passwordInput.addEventListener('keyup', (e) => {
 
     // Updating class and icon of requirement item if requirement matched or not
     if (isValid) {
+      helicopter++;
       requirementItem.classList.add('valid');
       requirementItem.firstElementChild.className = 'fa-solid fa-check';
     } else {
@@ -27,6 +31,15 @@ passwordInput.addEventListener('keyup', (e) => {
       requirementItem.firstElementChild.className = 'fa-solid fa-circle';
     }
   });
+  if(helicopter == 5) {
+    signupBtn.classList.add('shimmering-button');
+    signupBtn.classList.remove('shimmering-btn-def');
+  } else {
+      signupBtn.classList.remove('shimmering-button');
+      if(signupBtn.classList.contains(!'shimmering-btn-def')) {
+        signupBtn.classList.add('shimmering-btn-def');
+      }
+  }
 });
 
 eyeIcon.addEventListener('click', () => {
