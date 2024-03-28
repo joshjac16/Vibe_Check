@@ -31,14 +31,14 @@ passwordInput.addEventListener('keyup', (e) => {
       requirementItem.firstElementChild.className = 'fa-solid fa-circle';
     }
   });
-  if(helicopter == 5) {
+  if (helicopter == 5) {
     signupBtn.classList.add('shimmering-button');
     signupBtn.classList.remove('shimmering-btn-def');
   } else {
-      signupBtn.classList.remove('shimmering-button');
-      if(signupBtn.classList.contains(!'shimmering-btn-def')) {
-        signupBtn.classList.add('shimmering-btn-def');
-      }
+    signupBtn.classList.remove('shimmering-button');
+    if (!signupBtn.classList.contains('shimmering-btn-def')) {
+      signupBtn.classList.add('shimmering-btn-def');
+    }
   }
 });
 
