@@ -6,14 +6,23 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: #11131e;
+body{
+background-color: #5E615F;
+}
+.navbar{
+  background-color: #5E615F;
+}
+.nav-item{
+  background-color: #2826A1;
+  padding: 6px;
+  margin: 10px;
+  border-radius: 25px;
+
 }
 .wrapper {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 450px;
   overflow: hidden;
   padding: 28px;
