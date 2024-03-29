@@ -48,6 +48,63 @@ body {
   position: absolute;
   transform: translateY(-50%);
 }
+
+.wrapper .login-user-field {
+  height: 65px;
+  width: 100%;
+  position: relative;
+}
+.login-user-field input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  padding: 0 17px;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  border: 1px solid #999;
+}
+.login-user-field input:focus {
+  padding: 0 16px;
+  border: 2px solid #4285f4;
+}
+.login-user-field i {
+  right: 18px;
+  top: 50%;
+  font-size: 1.2rem;
+  color: #999;
+  cursor: pointer;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+.wrapper .login-pass-field {
+  height: 65px;
+  width: 100%;
+  position: relative;
+}
+.login-pass-field input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  padding: 0 17px;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  border: 1px solid #999;
+}
+.login-pass-field input:focus {
+  padding: 0 16px;
+  border: 2px solid #4285f4;
+}
+.login-pass-field i {
+  right: 18px;
+  top: 50%;
+  font-size: 1.2rem;
+  color: #999;
+  cursor: pointer;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
 .wrapper .email-field {
   height: 65px;
   width: 100%;
