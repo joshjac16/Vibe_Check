@@ -17,12 +17,13 @@ const requirements = [
   { regex: /[A-Z]/, index: 4 }, // At least one uppercase letter
 ];
 
-passwordInput.addEventListener('keyup', (e) => {
+signupContainer.addEventListener('keyup', (e) => {
+  let passwordValid = false;
   // for Stephen
   let helicopter = 0;
   requirements.forEach((item) => {
     // Check if the password matches the requirement regex
-    const isValid = item.regex.test(e.target.value);
+    const isValid = item.regex.test(passwordInput.value);
     const requirementItem = requirementList[item.index];
 
     // Updating class and icon of requirement item if requirement matched or not
@@ -36,18 +37,12 @@ passwordInput.addEventListener('keyup', (e) => {
     }
   });
   if (helicopter == 5) {
-    signupBtn.classList.add('shimmering-button');
-    signupBtn.classList.remove('shimmering-btn-def');
+    passwordValid = true;
   } else {
-    signupBtn.classList.remove('shimmering-button');
-    if (!signupBtn.classList.contains('shimmering-btn-def')) {
-      signupBtn.classList.add('shimmering-btn-def');
-    }
+    passwordValid = false;
   }
-});
-
-signupContainer.addEventListener('keyup', (e) => {
-  if(!signupContainer.children[0].children[0].value || !validate(signupContainer.children[1].children[0].value)) {
+  
+  if(!signupContainer.children[0].children[0].value || !validate(signupContainer.children[1].children[0].value) || !passwordValid) {
     signupBtn.classList.remove('shimmering-button');
     signupBtn.classList.add('shimmering-btn-def');
   } else {
