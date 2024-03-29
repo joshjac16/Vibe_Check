@@ -50,8 +50,8 @@ We used phind.com to help with debugging.
 
 We used the following guides in building this application:
 
-[]()
-[]()
+[Dark Neon Toggle Switch code](https://github.com/frontendcharm/Mini-Projects/tree/abf022a7d8535e046f929df1fd7cb9cf6e770799/FORM%20AND%20INPUTS/Dark%20Neon%20Toggle%20Switch)
+[Password Validator code](https://www.codingayush.com/2023/05/password-validation-using-html-css.html)
 []()
 []()
 
