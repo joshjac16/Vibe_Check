@@ -11,15 +11,15 @@ Song.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    song: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    album: {
+    artist: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    song_url: {
+    album: {
       type: DataTypes.STRING,
       allowNull: true,
     },
