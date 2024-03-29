@@ -20,11 +20,13 @@ signupContainer.addEventListener('keyup', (e) => {
   let container = target.parentElement.parentElement;
   if(container.classList.contains('login')) {
     if(!signupContainer.children[1].children[0].value || !validate(signupContainer.children[0].children[0].value)) { 
+      signupBtn.setAttribute('disabled');
       signupBtn.classList.remove('shimmering-button');
       signupBtn.classList.add('shimmering-btn-def');
     } else {
       signupBtn.classList.add('shimmering-button');
       signupBtn.classList.remove('shimmering-btn-def');
+      signupBtn.removeAttribute('disabled');
     }
     return;
   }
@@ -54,11 +56,13 @@ signupContainer.addEventListener('keyup', (e) => {
   }
   
   if(!signupContainer.children[0].children[0].value || !validate(signupContainer.children[1].children[0].value) || !passwordValid) { 
+    signupBtn.setAttribute('disabled');
     signupBtn.classList.remove('shimmering-button');
     signupBtn.classList.add('shimmering-btn-def');
   } else {
     signupBtn.classList.add('shimmering-button');
     signupBtn.classList.remove('shimmering-btn-def');
+    signupBtn.removeAttribute('disabled');
   }
 });
 
