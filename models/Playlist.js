@@ -15,6 +15,10 @@ Playlist.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
