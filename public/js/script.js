@@ -4,6 +4,8 @@ const requirementList = document.querySelectorAll('.requirement-list li');
 const signupBtn = document.querySelector('#signup-button');
 const loginPasswordInput = document.querySelector('.login-pass-field');
 const loginEmailInput = document.querySelector('.login-user-field');
+const signupContainer = document.querySelector('.signup-container');
+
 
 // An array of password requirements with corresponding
 // regular expressions and index of the requirement list item
@@ -43,6 +45,24 @@ passwordInput.addEventListener('keyup', (e) => {
     }
   }
 });
+
+signupContainer.addEventListener('keyup', (e) => {
+  if(!signupContainer.children[0].children[0].value || !validate(signupContainer.children[1].children[0].value)) {
+    signupBtn.classList.remove('shimmering-button');
+    signupBtn.classList.add('shimmering-btn-def');
+  } else {
+    signupBtn.classList.add('shimmering-button');
+    signupBtn.classList.remove('shimmering-btn-def');
+  }
+});
+
+function validate(email) {
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 eyeIcon.addEventListener('click', () => {
   // Toggle the password input type between "password" and "text"
