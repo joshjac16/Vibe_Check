@@ -2,8 +2,6 @@ const passwordInput = document.querySelector('.pass-field input');
 const eyeIcon = document.querySelector('.pass-field i');
 const requirementList = document.querySelectorAll('.requirement-list li');
 const signupBtn = document.querySelector('#signup-button');
-const loginPasswordInput = document.querySelector('.login-pass-field');
-const loginEmailInput = document.querySelector('.login-user-field');
 const signupContainer = document.querySelector('.signup-container');
 
 
@@ -18,6 +16,19 @@ const requirements = [
 ];
 
 signupContainer.addEventListener('keyup', (e) => {
+  let target = e.target;
+  let container = target.parentElement.parentElement;
+  if(container.classList.contains('login')) {
+    if(!signupContainer.children[1].children[0].value || !validate(signupContainer.children[0].children[0].value)) { 
+      signupBtn.classList.remove('shimmering-button');
+      signupBtn.classList.add('shimmering-btn-def');
+    } else {
+      signupBtn.classList.add('shimmering-button');
+      signupBtn.classList.remove('shimmering-btn-def');
+    }
+    return;
+  }
+
   let passwordValid = false;
   // for Stephen
   let helicopter = 0;
@@ -42,7 +53,7 @@ signupContainer.addEventListener('keyup', (e) => {
     passwordValid = false;
   }
   
-  if(!signupContainer.children[0].children[0].value || !validate(signupContainer.children[1].children[0].value) || !passwordValid) {
+  if(!signupContainer.children[0].children[0].value || !validate(signupContainer.children[1].children[0].value) || !passwordValid) { 
     signupBtn.classList.remove('shimmering-button');
     signupBtn.classList.add('shimmering-btn-def');
   } else {
@@ -50,6 +61,7 @@ signupContainer.addEventListener('keyup', (e) => {
     signupBtn.classList.remove('shimmering-btn-def');
   }
 });
+
 
 function validate(email) {
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
