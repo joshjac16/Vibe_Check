@@ -9,16 +9,16 @@
 
 /* Light Mode */
 :root[color-mode='light'] {
-  --background: #f2f2f2;
+  --background: #f8f6e3;
   --text: #111111;
-  --accent: #01408e;
+  --accent: #6ad4dd;
 }
 
 /* Dark Mode */
 :root[color-mode='dark'] {
-  --background: #232b32;
+  --background: #1b1a55;
   --text: #eeeeee;
-  --accent: #8fceff;
+  --accent: #9290c3;
 }
 
 body {
