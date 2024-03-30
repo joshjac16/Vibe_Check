@@ -36,6 +36,22 @@ router.post('/', async (req, res) => {
   }
 });
 
+
+// darkmode route
+router.post('/darkMode', async (req, res) => {
+  try {
+    const state = req.body.currentState;
+    
+    req.session.save(() => {
+      req.session.darkMode = state;
+      res.status(200).json(state);
+    })
+  } catch(e) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // Login
 router.post('/login', async (req, res) => {
   try {
