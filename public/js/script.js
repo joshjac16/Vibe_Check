@@ -17,16 +17,16 @@ const requirements = [
 signupContainer.addEventListener('keyup', (e) => {
   let target = e.target;
   let container = target.parentElement.parentElement;
-  if (container.classList.contains('login')) {
-    if (
-      !signupContainer.children[1].children[0].value ||
-      !validate(signupContainer.children[0].children[0].value)
-    ) {
+  
+  if(container.classList.contains('login')) {
+    if(!signupContainer.children[1].children[0].value || !validate(signupContainer.children[0].children[0].value)) { 
+      signupBtn.setAttribute('disabled');
       signupBtn.classList.remove('shimmering-button');
       signupBtn.classList.add('shimmering-btn-def');
     } else {
       signupBtn.classList.add('shimmering-button');
       signupBtn.classList.remove('shimmering-btn-def');
+      signupBtn.removeAttribute('disabled');
     }
     return;
   }
@@ -55,16 +55,14 @@ signupContainer.addEventListener('keyup', (e) => {
     passwordValid = false;
   }
 
-  if (
-    !signupContainer.children[0].children[0].value ||
-    !validate(signupContainer.children[1].children[0].value) ||
-    !passwordValid
-  ) {
+  if(!signupContainer.children[0].children[0].value || !validate(signupContainer.children[1].children[0].value) || !passwordValid) { 
+    signupBtn.setAttribute('disabled');
     signupBtn.classList.remove('shimmering-button');
     signupBtn.classList.add('shimmering-btn-def');
   } else {
     signupBtn.classList.add('shimmering-button');
     signupBtn.classList.remove('shimmering-btn-def');
+    signupBtn.removeAttribute('disabled');
   }
 });
 
@@ -85,43 +83,6 @@ eyeIcon.addEventListener('click', () => {
     passwordInput.type === 'password' ? '' : '-slash'
   }`;
 });
-
-// document.addEventListener('DOMContentLoaded', function () {
-//   var switchInput = document.querySelector('.switch__input');
-//   var targetElement = document.querySelector(':root'); // Change this selector to target the element you want to add/remove the class from
-//   var darkModeMessage = document.getElementById('darkModeMessage');
-
-//   function fadeOutMessage() {
-//     darkModeMessage.classList.add('fade-out');
-//     setTimeout(function () {
-//       darkModeMessage.innerHTML = '';
-//       darkModeMessage.classList.remove('fade-out');
-//     }, 1000); // 2 seconds
-//   }
-
-//   switchInput.addEventListener('change', function () {
-//     if (this.checked) {
-//       document.documentElement.setAttribute('color-mode', 'dark');
-//       targetElement.classList.add('dark-mode-on');
-//       darkModeMessage.innerHTML = '<p>Dark mode On</p>';
-//       fadeOutMessage();
-//     } else {
-//       document.documentElement.setAttribute('color-mode', 'light');
-//       targetElement.classList.remove('dark-mode-on');
-//       darkModeMessage.innerHTML = '<p>Light mode On</p>';
-//       fadeOutMessage();
-//     }
-
-//     // Check localStorage for dark mode preference on page load
-//     var isDarkMode = localStorage.getItem('darkMode') === 'true';
-//     applyDarkMode(isDarkMode);
-
-//     switchInput.addEventListener('change', function () {
-//       localStorage.setItem('darkMode', this.checked);
-//       applyDarkMode(this.checked);
-//     });
-//   });
-// });
 
 document.addEventListener('DOMContentLoaded', function () {
   var switchInput = document.querySelector('.switch__input');
