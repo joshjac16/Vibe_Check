@@ -7,10 +7,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* body {
-  background-color: #5e615f;
-} */
-
 /* Light Mode */
 :root[color-mode='light'] {
   --background: #f2f2f2;
@@ -34,16 +30,6 @@ body {
   color: var(--accent);
 }
 
-.message-overlay {
-  position: absolute;
-  opacity: 1;
-  transition: opacity 2s ease-out;
-}
-
-.message-overlay.fade-out {
-  opacity: 0;
-}
-
 .navbar {
   background-color: var(--background);
 }
@@ -64,7 +50,8 @@ body {
   padding: 28px;
   border-radius: 8px;
   background: #fff;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  /* Box shadow to create depth */
+  box-shadow: inset -6px -4px 10px 4px rgba(0, 0, 0, 0.2);
 }
 .wrapper .user-field {
   height: 65px;
@@ -295,6 +282,17 @@ body {
 }
 
 /* dark mode switch */
+
+.message-overlay {
+  position: absolute;
+  top: 14px;
+  opacity: 1;
+  transition: opacity 2s ease-out;
+}
+
+.message-overlay.fade-out {
+  opacity: 0;
+}
 
 .btn-bkgrd {
   --hue: 223;
