@@ -4,7 +4,6 @@ const requirementList = document.querySelectorAll('.requirement-list li');
 const signupBtn = document.querySelector('#signup-button');
 const signupContainer = document.querySelector('.signup-container');
 
-
 // An array of password requirements with corresponding
 // regular expressions and index of the requirement list item
 const requirements = [
@@ -18,6 +17,7 @@ const requirements = [
 signupContainer.addEventListener('keyup', (e) => {
   let target = e.target;
   let container = target.parentElement.parentElement;
+  
   if(container.classList.contains('login')) {
     if(!signupContainer.children[1].children[0].value || !validate(signupContainer.children[0].children[0].value)) { 
       signupBtn.setAttribute('disabled');
@@ -54,7 +54,7 @@ signupContainer.addEventListener('keyup', (e) => {
   } else {
     passwordValid = false;
   }
-  
+
   if(!signupContainer.children[0].children[0].value || !validate(signupContainer.children[1].children[0].value) || !passwordValid) { 
     signupBtn.setAttribute('disabled');
     signupBtn.classList.remove('shimmering-button');
@@ -65,7 +65,6 @@ signupContainer.addEventListener('keyup', (e) => {
     signupBtn.removeAttribute('disabled');
   }
 });
-
 
 function validate(email) {
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
@@ -83,4 +82,47 @@ eyeIcon.addEventListener('click', () => {
   eyeIcon.className = `fa-solid fa-eye${
     passwordInput.type === 'password' ? '' : '-slash'
   }`;
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var switchInput = document.querySelector('.switch__input');
+  var targetElement = document.querySelector(':root'); // Change this selector to target the element you want to add/remove the class from
+  var darkModeMessage = document.getElementById('darkModeMessage');
+
+  // Function to fade out the message
+  function fadeOutMessage() {
+    darkModeMessage.classList.add('fade-out');
+    setTimeout(function () {
+      darkModeMessage.innerHTML = '';
+      darkModeMessage.classList.remove('fade-out');
+    }, 2000); // 2 seconds
+  }
+
+  // Function to apply dark mode based on the preference
+  function applyDarkMode(isDarkMode) {
+    if (isDarkMode) {
+      document.documentElement.setAttribute('color-mode', 'dark');
+      targetElement.classList.add('dark-mode-on');
+      darkModeMessage.innerHTML = '<p>Dark mode On</p>';
+    } else {
+      document.documentElement.setAttribute('color-mode', 'light');
+      targetElement.classList.remove('dark-mode-on');
+      darkModeMessage.innerHTML = '<p>Light mode On</p>';
+    }
+    fadeOutMessage();
+  }
+
+  // Check sessionStorage for dark mode preference and switch state on page load
+  var isDarkMode = sessionStorage.getItem('darkMode') === 'true';
+  var switchState = sessionStorage.getItem('switchState') === 'true';
+  applyDarkMode(isDarkMode);
+  switchInput.checked = switchState;
+
+  // Event listener for switch input change
+  switchInput.addEventListener('change', function () {
+    var isChecked = this.checked;
+    sessionStorage.setItem('darkMode', isChecked);
+    sessionStorage.setItem('switchState', isChecked);
+    applyDarkMode(isChecked);
+  });
 });
