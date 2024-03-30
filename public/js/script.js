@@ -17,9 +17,12 @@ const requirements = [
 signupContainer.addEventListener('keyup', (e) => {
   let target = e.target;
   let container = target.parentElement.parentElement;
-  
-  if(container.classList.contains('login')) {
-    if(!signupContainer.children[1].children[0].value || !validate(signupContainer.children[0].children[0].value)) { 
+
+  if (container.classList.contains('login')) {
+    if (
+      !signupContainer.children[1].children[0].value ||
+      !validate(signupContainer.children[0].children[0].value)
+    ) {
       signupBtn.setAttribute('disabled');
       signupBtn.classList.remove('shimmering-button');
       signupBtn.classList.add('shimmering-btn-def');
@@ -55,7 +58,11 @@ signupContainer.addEventListener('keyup', (e) => {
     passwordValid = false;
   }
 
-  if(!signupContainer.children[0].children[0].value || !validate(signupContainer.children[1].children[0].value) || !passwordValid) { 
+  if (
+    !signupContainer.children[0].children[0].value ||
+    !validate(signupContainer.children[1].children[0].value) ||
+    !passwordValid
+  ) {
     signupBtn.setAttribute('disabled');
     signupBtn.classList.remove('shimmering-button');
     signupBtn.classList.add('shimmering-btn-def');
@@ -86,7 +93,7 @@ eyeIcon.addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', function () {
   var switchInput = document.querySelector('.switch__input');
-  var targetElement = document.querySelector(':root'); // Change this selector to target the element you want to add/remove the class from
+  var targetElement = document.querySelector('body'); // Change this selector to target the element you want to add/remove the class from
   var darkModeMessage = document.getElementById('darkModeMessage');
 
   // Function to fade out the message
