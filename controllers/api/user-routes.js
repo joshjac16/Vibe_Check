@@ -16,10 +16,8 @@ router.post('/', async (req, res) => {
       },
     });
 
-    if(!userData) {
-      res
-        .status(400)
-        .json({ message: '' });
+    if (!userData) {
+      res.status(400).json({ message: 'User not found' });
       return;
     }
     const userId = await userData.getId();
@@ -36,17 +34,16 @@ router.post('/', async (req, res) => {
   }
 });
 
-
 // darkmode route
 router.post('/darkMode', async (req, res) => {
   try {
     const state = req.body.currentState;
-    
+
     req.session.save(() => {
       req.session.darkMode = state;
       res.status(200).json(state);
-    })
-  } catch(e) {
+    });
+  } catch (e) {
     console.log(err);
     res.status(500).json(err);
   }

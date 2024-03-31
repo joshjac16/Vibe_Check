@@ -1,45 +1,44 @@
+<form class='wrapper signup-container'>
+  <div class='user-field'>
+    <input id='username-signup' type='username' placeholder='Username' />
+  </div>
+  <div class='email-field'>
+    <input id='email-signup' type='email' placeholder='Email' />
+  </div>
+  <div class='pass-field'>
+    <input id='password-signup' type='password' placeholder='Password' />
+    <i class='fa-solid fa-eye'></i>
+  </div>
+  <div class='content'>
+    <p>Password must contains</p>
+    <ul class='requirement-list'>
+      <li>
+        <i class='fa-solid fa-circle'></i>
+        <span>At least 8 characters length</span>
+      </li>
+      <li>
+        <i class='fa-solid fa-circle'></i>
+        <span>At least 1 number (0...9)</span>
+      </li>
+      <li>
+        <i class='fa-solid fa-circle'></i>
+        <span>At least 1 lowercase letter (a...z)</span>
+      </li>
+      <li>
+        <i class='fa-solid fa-circle'></i>
+        <span>At least 1 special symbol (!...$)</span>
+      </li>
+      <li>
+        <i class='fa-solid fa-circle'></i>
+        <span>At least 1 uppercase letter (A...Z)</span>
+      </li>
+    </ul>
+  </div>
+  <div style='text-align:center'><button
+      id='signup-button'
+      class='shimmering-btn-def'
+      disabled
+    >Signup</button></div>
+</form>
 
-    <form class='wrapper signup-container'>
-      <div class='user-field'>
-        <input id='username-signup' type='username' placeholder='Username' />
-      </div>
-      <div class='email-field'>
-        <input id='email-signup' type='email' placeholder='Email' />
-      </div>
-      <div class='pass-field'>
-        <input id='password-signup' type='password' placeholder='Password' />
-        <i class='fa-solid fa-eye'></i>
-      </div>
-      <div class='content'>
-        <p>Password must contains</p>
-        <ul class='requirement-list'>
-          <li>
-            <i class='fa-solid fa-circle'></i>
-            <span>At least 8 characters length</span>
-          </li>
-          <li>
-            <i class='fa-solid fa-circle'></i>
-            <span>At least 1 number (0...9)</span>
-          </li>
-          <li>
-            <i class='fa-solid fa-circle'></i>
-            <span>At least 1 lowercase letter (a...z)</span>
-          </li>
-          <li>
-            <i class='fa-solid fa-circle'></i>
-            <span>At least 1 special symbol (!...$)</span>
-          </li>
-          <li>
-            <i class='fa-solid fa-circle'></i>
-            <span>At least 1 uppercase letter (A...Z)</span>
-          </li>
-        </ul>
-      </div>
-      <div style='text-align:center'><button
-          id='signup-button'
-          class='shimmering-btn-def'
-          disabled
-        >Signup</button></div>
-    </form>
-
-  
+<script src='/js/signup.js'></script>

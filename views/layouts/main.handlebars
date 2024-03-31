@@ -149,17 +149,24 @@
                 <span class='switch__led'></span>
                 <span class='switch__text'>Power</span>
               </label></div>
-            <li class='nav-item'>
-              <a class='nav-link active' aria-current='page' href='/'>Home</a>
+            <li class='nav-item' id='home'>
+              <a
+                class='nav-link active'
+                id='home'
+                aria-current='page'
+                href='/'
+              >Home</a>
             </li>
             {{#if loggedIn}}
-              <button id='logout' class='btn-no-style'>Logout</button>
+              <li class='nav-item' id='logout'>
+                <a class='nav-link' id='logout' href='/logout'>Logout</a>
+              </li>
             {{else}}
               <li class='nav-item'>
-                <a class='nav-link' href='/login'>Login</a>
+                <a class='nav-link' id='login' href='/login'>Login</a>
               </li>
               <li class='nav-item'>
-                <a class='nav-link' href='/signup'>Sign Up</a>
+                <a class='nav-link' id='signup' href='/signup'>Sign Up</a>
               </li>
             {{/if}}
 
@@ -167,12 +174,20 @@
         </div>
       </div>
     </nav>
-    <main><div class='homepage'>{{{body}}}</div>
+    <main>
+      <div class='homepage'>
+        {{{body}}}</div>
       <script
         src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'
         integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz'
         crossorigin='anonymous'
       ></script>
-      <script src='/js/script.js'></script></main>
+    </main>
+    {{#if loggedIn}}
+      <script src='/js/logout.js'></script>
+    {{/if}}
+
   </body>
+
+  <script src='/js/script.js'></script>
 </html>
