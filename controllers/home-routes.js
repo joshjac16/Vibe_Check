@@ -4,27 +4,27 @@ const { Playlist, Song } = require('../models');
 
 router.get('/', async (req, res) => {
   try {
-    // const dbPlaylistData = await Playlist.findAll({
-    //   include: [
-    //     {
-    //       model: Playlist,
-    //       attributes: ['title', 'rating'],
-    //     },
-    //   ],
-    // });
+    //   const dbPlaylistData = await Playlist.findAll({
+    //     include: [
+    //       {
+    //         model: Song,
+    //         attributes: ['song', 'artist', 'album', 'rating'],
+    //       },
+    //     ],
+    //   });
 
-    // const playlists = dbPlaylistData.map((playlist) =>
-    //   playlist.get({ plain: true })
-    // );
+    //   const playlists = dbPlaylistData.map((playlist) =>
+    //     playlist.get({ plain: true })
+    //   );
 
-    // const dbSongData = await Song.findAll({
-    //   include: [
-    //     {
-    //       model: Song,
-    //       attributes: ['song', 'artist', 'album', 'rating'],
-    //     },
-    //   ],
-    // });
+    //   const dbSongData = await Song.findAll({
+    //     include: [
+    //       {
+    //         model: Song,
+    //         attributes: ['song', 'artist', 'album', 'rating'],
+    //       },
+    //     ],
+    //   });
 
     // const songs = dbSongData.map((song) => song.get({ plain: true }));
     res.render('homepage', {
@@ -57,7 +57,7 @@ router.get('/', async (req, res) => {
 //     );
 
 //     res.render('homepage', {
-//       playlists,
+//       // playlists,
 //       loggedIn: req.session.loggedIn,
 //     });
 //   } catch (err) {
@@ -80,6 +80,14 @@ router.get('/signup', (req, res) => {
     return;
   }
   res.render('signup');
+});
+
+router.get('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/login');
+    return;
+  }
+  res.render('login');
 });
 
 module.exports = router;

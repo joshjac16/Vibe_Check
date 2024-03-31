@@ -12,6 +12,7 @@
   --background: #f8f6e3;
   --text: #111111;
   --accent: #6ad4dd;
+  --link: #a13713;
 }
 
 /* Dark Mode */
@@ -19,6 +20,7 @@
   --background: #1b1a55;
   --text: #eeeeee;
   --accent: #9290c3;
+  --link: #6ff875;
 }
 
 body {
@@ -33,6 +35,7 @@ body {
 .navbar {
   background-color: var(--background);
 }
+
 .nav-item {
   background-color: var(--accent);
   padding: 6px;
@@ -41,6 +44,11 @@ body {
   /* Box shadow to create depth */
   box-shadow: inset -6px -4px 10px 4px rgba(0, 0, 0, 0.2);
 }
+
+.nav-link.active {
+  color: var(--link) !important;
+}
+
 .wrapper {
   display: block;
   margin-left: auto;
