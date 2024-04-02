@@ -8,9 +8,9 @@ const seedAll = async () => {
 
   await seedUser();
 
-  await seedSongs();
-
   await seedPlaylist();
+
+  await seedSongs();
 
   process.exit(0);
 };
