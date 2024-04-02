@@ -66,6 +66,34 @@ router.get('/', async (req, res) => {
 //   }
 // });
 
+router.get('/playlists/:id', withAuth, async (req, res) => {
+  try {
+    const dbPlaylistData = await Playlist.findByPk({
+      where: {
+        user_id: req.session.userId,
+      },
+      include: [
+        {
+          model: Song,
+          attributes: ['title', 'song'],
+        },
+      ],
+    });
+
+    const playlists = dbPlaylistData.map((playlists) =>
+      playlists.get({ plain: true })
+    );
+
+    res.render('homepage', {
+      playlists,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');

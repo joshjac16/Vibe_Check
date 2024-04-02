@@ -54,6 +54,7 @@ const playlistData = [
       },
     ],
     rating: 5,
+    user_id: 1,
   },
   {
     title: 'Playlist 2',
@@ -108,6 +109,7 @@ const playlistData = [
       },
     ],
     rating: 4,
+    user_id: 1,
   },
   {
     title: 'Playlist 3',
@@ -162,6 +164,7 @@ const playlistData = [
       },
     ],
     rating: 4,
+    user_id: 1,
   },
   {
     title: 'Playlist 4',
@@ -216,6 +219,7 @@ const playlistData = [
       },
     ],
     rating: 5,
+    user_id: 1,
   },
   {
     title: 'Playlist 5',
@@ -270,6 +274,7 @@ const playlistData = [
       },
     ],
     rating: 3,
+    user_id: 1,
   },
   {
     title: 'Playlist 6',
@@ -324,6 +329,7 @@ const playlistData = [
       },
     ],
     rating: 2,
+    user_id: 2,
   },
   {
     title: 'Playlist 7',
@@ -378,6 +384,7 @@ const playlistData = [
       },
     ],
     rating: 5,
+    user_id: 2,
   },
   {
     title: 'Playlist 8',
@@ -432,6 +439,7 @@ const playlistData = [
       },
     ],
     rating: 4,
+    user_id: 2,
   },
   {
     title: 'Playlist 9',
@@ -486,6 +494,7 @@ const playlistData = [
       },
     ],
     rating: 4,
+    user_id: 2,
   },
   {
     title: 'Playlist 10',
@@ -540,6 +549,7 @@ const playlistData = [
       },
     ],
     rating: 1,
+    user_id: 2,
   },
 ];
 
