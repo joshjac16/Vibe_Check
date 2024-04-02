@@ -66,26 +66,22 @@ router.get('/', async (req, res) => {
 //   }
 // });
 
-router.get('/playlists/:id', withAuth, async (req, res) => {
+router.get('/playlist/:id', withAuth, async (req, res) => {
   try {
-    const dbPlaylistData = await Playlist.findByPk({
+    const dbPlaylistData = await Song.findAll({
       where: {
-        user_id: req.session.userId,
+        playlist_id: req.params.id,
       },
-      include: [
-        {
-          model: Song,
-          attributes: ['title', 'song'],
-        },
-      ],
     });
-
-    const playlists = dbPlaylistData.map((playlists) =>
-      playlists.get({ plain: true })
+    const dbPlaylistName = await Playlist.findByPk(req.params.id);
+    console.log(typeof dbPlaylistData, dbPlaylistData);
+    const playlist = dbPlaylistData.map((playlist) =>
+      playlist.get({ plain: true })
     );
-
-    res.render('homepage', {
-      playlists,
+    console.log(playlist);
+    res.render('playlist', {
+      playlist,
+      playlistTitle: dbPlaylistName.title,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {

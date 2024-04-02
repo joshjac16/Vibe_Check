@@ -6,12 +6,21 @@ const songData = [
     artist: 'Queen',
     album: 'A Night at the Opera',
     rating: 4,
+    playlist_id: 1,
+  },
+  {
+    song: 'Bohemian Rhapsody',
+    artist: 'Queen',
+    album: 'A Night at the Opera',
+    rating: 4,
+    playlist_id: 2,
   },
   {
     song: 'Smells Like Teen Spirit',
     artist: 'Nirvana',
     album: 'Nevermind',
     rating: 5,
+    playlist_id: 1,
   },
   {
     song: 'Imagine',
