@@ -68,9 +68,9 @@ Github: []()
 
 Email: []()
 
-Github: []()
+Github: [AaronH-o](https://github.com/AaronH-o)
 
-Email: []()
+Email: [bicecreamaar@gmail.com](mailto:bicecreamaar@gmail.com)
 
 Github: [ktetsuyama](https://github.com/ktetsuyama)
 
