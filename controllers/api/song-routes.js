@@ -12,7 +12,7 @@ router.post('/:id', async (req, res) => {
       playlist_id: req.params.id,
     });
 
-    res.status(200).json(dbUserData);
+    res.status(200).json(dbSongData);
 
   } catch (err) {
     console.log(err);
