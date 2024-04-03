@@ -199,6 +199,18 @@ body {
   position: absolute;
   transform: translateY(-50%);
 }
+
+/* CSS for star rating system */
+.star {
+  cursor: pointer; 
+  color: gray; /
+}
+
+.star.active {
+  color: blue; 
+}
+
+
 .wrapper .content {
   margin: 20px 0 10px;
 }
