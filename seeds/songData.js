@@ -9,9 +9,9 @@ const songData = [
     playlist_id: 1,
   },
   {
-    song: 'Bohemian Rhapsody',
-    artist: 'Queen',
-    album: 'A Night at the Opera',
+    song: 'The Faded Line',
+    artist: 'Lamb Of God',
+    album: 'Ashes Of The Wake',
     rating: 4,
     playlist_id: 2,
   },

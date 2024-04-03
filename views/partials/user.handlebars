@@ -1,0 +1,67 @@
+{{#if loggedIn}}
+  <section class='Playlists'>
+    <p>What's good {{username}}?</p>
+  </section>
+
+  <div class='row mt-4'>
+    <div class='col-md-6'>
+      <h3>Create a New PLaylist:</h3>
+
+      <form class='form new-playlist-form'>
+        <div class='form-group'>
+          <label for='playlist-name'>Playlist title:</label>
+          <input
+            class='form-input'
+            type='text'
+            id='playlist-title'
+            name='playlist-title'
+          />
+        </div>
+        <div class='form-group'>
+          <label for='playlist-body'>Playlist songs:</label>
+          <select class='form-input' id='playlist-songs' name='playlist-songs'>
+            {{#each songs}}
+              <option value='{{this.song}}'>{{this.song}}
+                -
+                {{this.artist}}
+                -
+                {{this.album}}</option>
+            {{/each}}
+          </select>
+          <!-- Button to add selected song to temporary playlist -->
+          <button id='add-song-btn' class='btn btn-success'>Add Song</button>
+
+          <!-- Display temporary playlist -->
+          <ul id='temporary-playlist'></ul>
+        </div>
+        <!-- Star rating system -->
+        <div class='form-group'>
+          <label for='playlist-rating'>Rating:</label>
+          <div id='playlist-rating' class='rating'>
+            <span class='star' data-value='1'>&#9733;</span>
+            <span class='star' data-value='2'>&#9733;</span>
+            <span class='star' data-value='3'>&#9733;</span>
+            <span class='star' data-value='4'>&#9733;</span>
+            <span class='star' data-value='5'>&#9733;</span>
+          </div>
+        </div>
+        <div class='form-group'>
+          <button type='submit' class='btn btn-primary'>Bussin'!</button>
+        </div>
+        <input
+          type='hidden'
+          id='playlist-rating-input'
+          name='playlist-rating-input'
+          value='0'
+        />
+      </form>
+    </div>
+  </div>
+{{/if}}
+<section>
+  {{!-- {{#each playlists as |playlists|}}
+    {{> user-playlists}}
+  {{/each}} --}}
+</section>
+
+<script src='/js/playlistCreate.js'></script>
