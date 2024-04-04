@@ -15,12 +15,13 @@ let selectedValue = 0;
 const addSongToTemporaryPlaylist = (event) => {
   event.preventDefault();
 
+  const array = document.querySelector('#playlist-songs').value.split('-');
+
   // Gets the selected song from the dropdown
-  const selectedSong = document.querySelector('#playlist-songs').value.trim();
+  const selectedSong = `${array[0]} - ${array[1]} - ${array[2]}`;
 
   // Adds the selected song to the temporary playlist array
   temporaryPlaylist.push(selectedSong);
-  const array = selectedSong.split('-');
   readyToCreatePlaylist.push(
     new Song(array[0].trim(), array[1].trim(), array[2].trim(), array[3].trim())
   );
