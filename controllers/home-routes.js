@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
-const { Playlist, Song, User } = require('../models');
+const { Playlist, Song, User, SongLib } = require('../models');
 
 router.get('/', async (req, res) => {
   try {
@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
     //     playlist.get({ plain: true })
     //   );
 
-    const dbSongData = await Song.findAll({
+    const dbSongData = await SongLib.findAll({
       attributes: ['song', 'artist', 'album', 'rating'],
       order: [['id', 'DESC']],
       limit: 10,
@@ -79,7 +79,7 @@ router.get('/playlists', withAuth, async (req, res) => {
 
 router.get('/playlist/:id', withAuth, async (req, res) => {
   try {
-    const dbPlaylistData = await Song.findAll({
+    const dbPlaylistData = await SongLib.findAll({
       where: {
         playlist_id: req.params.id,
       },

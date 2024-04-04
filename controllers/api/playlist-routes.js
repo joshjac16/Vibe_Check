@@ -1,14 +1,11 @@
 const router = require('express').Router();
-const { Playlist } = require('../../models');
-const { Song } = require('../../models');
+const { Playlist, Song, SongLib } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
   const songs = await Song.findAll();
   res.render('playlist', { songs });
 });
-
-router.get('/', withAuth, async (req, res) => {});
 
 router.post('/', withAuth, async (req, res) => {
   try {
