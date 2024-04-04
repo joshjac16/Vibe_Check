@@ -58,7 +58,7 @@ router.get('/playlists', withAuth, async (req, res) => {
       playlists.get({ plain: true })
     );
 
-    res.render('user', {
+    res.render('homepage', {
       userName: dbUserName.username,
       playlists,
       loggedIn: req.session.loggedIn,

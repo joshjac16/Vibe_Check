@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Song } = require('../../models');
 
-
 router.post('/:id', async (req, res) => {
   try {
     const dbSongData = await Song.create({
@@ -13,9 +12,10 @@ router.post('/:id', async (req, res) => {
     });
 
     res.status(200).json(dbSongData);
-
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
+module.exports = router;

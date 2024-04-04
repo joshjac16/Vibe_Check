@@ -1,5 +1,6 @@
 // Defines an array to store temporary playlist items
 let temporaryPlaylist = [];
+let selectedValue = 0;
 
 // Function that adds a song to a temporary playlist
 const addSongToTemporaryPlaylist = (event) => {
@@ -21,13 +22,14 @@ const addSongToTemporaryPlaylist = (event) => {
 // Function that handles clicking on stars to rate the playlist
 const handleRatingClick = (event) => {
   const stars = document.querySelectorAll('.star');
-  const selectedValue = parseInt(event.target.getAttribute('data-value'));
+  selectedValue = parseInt(event.target.getAttribute('data-value'));
 
   // Remove 'active' class from all stars
   stars.forEach((star) => star.classList.remove('active'));
 
   // Add 'active' class to stars up to the clicked star
   for (let i = 0; i < selectedValue; i++) {
+    console.log(selectedValue);
     stars[i].classList.add('active');
   }
 
@@ -45,21 +47,23 @@ const newFormHandler = async (event) => {
   event.preventDefault();
   // Gets the title of the playlist from the input field
   const title = document.querySelector('#playlist-title').value.trim();
+  const rating = selectedValue;
   // Checks if the title and temporary playlist are not empty
-  if (title && temporaryPlaylist.length > 0) {
+  if (title && rating) {
     // Sends the playlist title and temporary playlist to the server
     try {
       const response = await fetch(`/api/playlist`, {
         method: 'POST',
-        body: JSON.stringify({ title, songs: temporaryPlaylist }),
+        body: JSON.stringify({ title, rating }),
         headers: {
           'Content-Type': 'application/json',
         },
       });
 
       if (response.ok) {
+        console.log(response);
         // Redirects the user to their user page after successful playlist creation
-        document.location.replace('/user');
+        document.location.replace('/');
       } else {
         alert('Failed to create playlist');
       }
