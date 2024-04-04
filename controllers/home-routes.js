@@ -35,7 +35,9 @@ router.get('/', async (req, res) => {
       order: [['rating', 'DESC']],
       limit: 10,
     });
-    const playlists = dbPlaylistData.map((playlist) => playlist.get({ plain: true }));
+    const playlists = dbPlaylistData.map((playlist) =>
+      playlist.get({ plain: true })
+    );
 
     res.render('homepage', {
       // playlists,
@@ -98,6 +100,7 @@ router.get('/playlist/:id', withAuth, async (req, res) => {
       playlist,
       isCreator,
       playlistTitle: dbPlaylistName.title,
+      playlistId: dbPlaylistName.id,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
