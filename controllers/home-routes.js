@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
     const dbSongData = await SongLib.findAll({
       attributes: ['song', 'artist', 'album', 'rating'],
-      order: [['id', 'DESC']],
+      order: [['rating', 'DESC']],
       limit: 10,
     });
 
@@ -79,7 +79,7 @@ router.get('/playlists', withAuth, async (req, res) => {
 
 router.get('/playlist/:id', withAuth, async (req, res) => {
   try {
-    const dbPlaylistData = await SongLib.findAll({
+    const dbPlaylistData = await Song.findAll({
       where: {
         playlist_id: req.params.id,
       },
