@@ -35,7 +35,9 @@ router.get('/', async (req, res) => {
       order: [['rating', 'DESC']],
       limit: 10,
     });
-    const playlists = dbPlaylistData.map((playlist) => playlist.get({ plain: true }));
+    const playlists = dbPlaylistData.map((playlist) =>
+      playlist.get({ plain: true })
+    );
 
     res.render('homepage', {
       // playlists,
@@ -86,17 +88,19 @@ router.get('/playlist/:id', withAuth, async (req, res) => {
     console.log(typeof dbPlaylistData, dbPlaylistData);
     // creates a false boolean result for the creator of the playlist, then checks if the creator of theplayist's id matches the currently logged in user. If yes, then the user will be able to edit or delete the playlist.
     let isCreator = false;
-    if (req.session.user_id === dbPlaylistData.user_id) {
-      isPoster = true;
+    if (req.session.userId === dbPlaylistName.user_id) {
+      isCreator = true;
     }
     const playlist = dbPlaylistData.map((playlist) =>
       playlist.get({ plain: true })
     );
     console.log(playlist);
+
     res.render('playlist', {
       playlist,
-      isCreator: isCreator,
+      isCreator,
       playlistTitle: dbPlaylistName.title,
+      playlistId: dbPlaylistName.id,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {

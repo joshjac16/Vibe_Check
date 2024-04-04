@@ -24,19 +24,25 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-// router.post('/:id', withAuth, async (req, res) => {
-//   try {
-//     const dbPlaylistData = await Playlist.create({
-//       title: req.body.title,
-//       rating: req.body.rating,
-//       user_id: req.params.id,
-//     });
+// If a DELETE request is made to /api/posts/:id, that post is deleted.
 
-//     res.status(200).json(dbPlaylistData);
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const playlistData = await Playlist.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!playlistData) {
+      res.status(404).json({ message: 'No playlist found with this id!' });
+      return;
+    }
+
+    res.status(200).json(playlistData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
