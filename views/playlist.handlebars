@@ -1,0 +1,14 @@
+<section class='songs' id="playlist">
+    <p id="playlist-title">Playlist: {{ playlistTitle }}</p>
+  {{#each playlist as |playlist|}}
+    {{> user-playlist}}
+  {{/each}}
+  {{#if isCreator}}
+  <div class='row'>
+    <div class='col-md-1'>
+      <button class='btn btn-sm btn-danger' data-id='{{id}}'>DELETE</button>
+    </div>
+  </div>
+{{/if}}
+</section>
+<script src='/js/playlistDelete.js'></script>
