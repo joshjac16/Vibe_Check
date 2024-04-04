@@ -21,7 +21,9 @@
           <label for='playlist-body'>Playlist songs:</label>
           <select class='form-input' id='playlist-songs' name='playlist-songs'>
             {{#each songs}}
-              <option value='{{this.song}}'>{{this.song}}
+              <option
+                value='{{this.song}}-{{this.artist}}-{{this.album}}-{{this.rating}}'
+              >{{this.song}}
                 -
                 {{this.artist}}
                 -
