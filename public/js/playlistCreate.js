@@ -66,7 +66,7 @@ const newFormHandler = async (event) => {
 
         console.log('playlist id', data.id);
 
-        
+        document.location.replace('/');
       } else {
         alert('Failed to create playlist');
       }
