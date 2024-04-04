@@ -1,5 +1,6 @@
 <section class='songs' id="playlist">
     <p id="playlist-title">Playlist: {{ playlistTitle }}</p>
+    <p>Playlist rating: {{playlistRating}}</p>
   {{#each playlist as |playlist|}}
     {{> user-playlist}}
   {{/each}}

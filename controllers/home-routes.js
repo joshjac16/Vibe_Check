@@ -101,6 +101,7 @@ router.get('/playlist/:id', withAuth, async (req, res) => {
       isCreator,
       playlistTitle: dbPlaylistName.title,
       playlistId: dbPlaylistName.id,
+      playlistRating: dbPlaylistName.rating,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {

@@ -1,4 +1,12 @@
+{{#if loggedIn}}
 {{> user}}
+
+<section class="playlists">
+  {{#each playlists as |playlist|}}
+  {{> user-playlists}}
+  {{/each}}
+</section>
+{{/if}}
 
 <section class="playlists">
   {{#each playlists as |playlist|}}

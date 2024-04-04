@@ -1,5 +1,14 @@
 // Defines an array to store temporary playlist items
 let temporaryPlaylist = [];
+let readyToCreatePlaylist = [];
+class Song {
+  constructor(title, artist, album, rating) {
+    this.title = title;
+    this.artist = artist;
+    this.album = album;
+    this.rating = rating;
+  }
+}
 let selectedValue = 0;
 
 // Function that adds a song to a temporary playlist
@@ -11,6 +20,10 @@ const addSongToTemporaryPlaylist = (event) => {
 
   // Adds the selected song to the temporary playlist array
   temporaryPlaylist.push(selectedSong);
+  const array = selectedSong.split('-');
+  readyToCreatePlaylist.push(
+    new Song(array[0].trim(), array[1].trim(), array[2].trim(), array[3].trim())
+  );
 
   // Displays the selected song in a list on the page
   const playlistDisplay = document.querySelector('#temporary-playlist');
@@ -61,10 +74,10 @@ const newFormHandler = async (event) => {
       });
 
       if (response.ok) {
-        
         const data = await response.json();
-
-        console.log('playlist id', data.id);
+        for (let i = 0; i < readyToCreatePlaylist.length; i++) {
+          songPost(readyToCreatePlaylist[i], data.id);
+        }
 
         document.location.replace('/');
       } else {
@@ -74,6 +87,21 @@ const newFormHandler = async (event) => {
       console.error('Error creating playlist:', error);
     }
   }
+};
+
+const songPost = async (jams, id) => {
+  console.log(jams);
+  const song = jams.title;
+  const artist = jams.artist;
+  const album = jams.album;
+  const rating = jams.rating;
+  const res = await fetch(`/api/song/${id}`, {
+    method: 'POST',
+    body: JSON.stringify({ song, artist, album, rating }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 };
 
 // Attachs event listener to the "Add Song" button
