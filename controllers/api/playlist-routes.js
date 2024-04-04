@@ -8,6 +8,8 @@ router.get('/', withAuth, async (req, res) => {
   res.render('playlist', { songs });
 });
 
+router.get('/', withAuth, async (req, res) => {});
+
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPlaylist = await Playlist.create({
