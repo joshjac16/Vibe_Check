@@ -49,6 +49,10 @@ body {
   color: var(--link) !important;
 }
 
+.hidden {
+  display: none;
+}
+
 .wrapper {
   display: block;
   margin-left: auto;
@@ -202,14 +206,13 @@ body {
 
 /* CSS for star rating system */
 .star {
-  cursor: pointer; 
-  color: gray; /
+  cursor: pointer;
+  color: gray;
 }
 
 .star.active {
-  color: blue; 
+  color: blue;
 }
-
 
 .wrapper .content {
   margin: 20px 0 10px;

@@ -1,6 +1,12 @@
 <section>
-  <p>Song: {{song}}</p>
-  <p>Artist: {{artist}}</p>
-  <p>Album: {{album}}</p>
-  <p>Rating: {{rating}}</p>
+  <div class='song'>
+    <a href='javascript:void(0);' class='song-title'>Song: {{song}}</a>
+    <div class='details hidden'>
+      <p>Artist: {{artist}}</p>
+      <p>Album: {{album}}</p>
+      <p>Rating: {{rating}}</p>
+    </div>
+  </div>
 </section>
+
+{{! <script src='/js/playlistShowInfo.js'></script> }}

@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
     //   );
 
     const dbSongData = await SongLib.findAll({
-      attributes: ['song', 'artist', 'album', 'rating'],
+      attributes: ['id', 'song', 'artist', 'album', 'rating'],
       order: [['rating', 'DESC']],
       limit: 10,
     });
@@ -134,6 +134,24 @@ router.get('/playlist/:id', withAuth, async (req, res) => {
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/song/:id', withAuth, async (req, res) => {
+  try {
+    const songData = await Song.findByPk(req.params.id);
+
+    console.log(songData);
+    res.render('song', {
+      song: songData.song,
+      artist: songData.artist,
+      album: songData.album,
+      rating: songData.rating,
+      loggedIn: req.session.loggedIn,
+    })
+  } catch(err) {
     console.log(err);
     res.status(500).json(err);
   }
