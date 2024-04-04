@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 
     const username = userData ? userData.username : '';
     const playlists = await Playlist.findAll({
-      where: { user_id: req.session.userId },
+      // where: { user_id: req.session.userId },
     });
     res.render('homepage', {
       // playlists,
