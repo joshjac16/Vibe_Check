@@ -119,11 +119,14 @@ router.get('/playlist/:id', withAuth, async (req, res) => {
     const playlist = dbPlaylistData.map((playlist) =>
       playlist.get({ plain: true })
     );
-    console.log(playlist);
+    console.log(dbPlaylistName);
+    // you can use day.js on playlistCreation to change it to a date format you'd like!
+    let playlistCreation = dbPlaylistName.createdAt;
 
     res.render('playlist', {
       playlist,
       isCreator,
+      playlistCreation,
       playlistTitle: dbPlaylistName.title,
       playlistId: dbPlaylistName.id,
       playlistRating: dbPlaylistName.rating,
