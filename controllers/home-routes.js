@@ -19,6 +19,8 @@ router.get('/', async (req, res) => {
 
     const dbSongData = await Song.findAll({
       attributes: ['song', 'artist', 'album', 'rating'],
+      order: [['id', 'DESC']],
+      limit: 10,
     });
 
     const songs = dbSongData.map((song) => song.get({ plain: true }));
@@ -28,17 +30,13 @@ router.get('/', async (req, res) => {
     });
 
     const username = userData ? userData.username : '';
-    
-    let playlists;
 
-    if(Number.isFinite(req.session.userId)){
-      playlists = await Playlist.findAll({
-        where: { user_id: req.session.userId },
-      });
-    } else {
-      playlists = await Playlist.findAll();
-    }
-    
+    const dbPlaylistData = await Playlist.findAll({
+      order: [['rating', 'DESC']],
+      limit: 10,
+    });
+    const playlists = dbPlaylistData.map((playlist) => playlist.get({ plain: true }));
+
     res.render('homepage', {
       // playlists,
       songs: songs,
