@@ -30,12 +30,13 @@ router.get('/', async (req, res) => {
     });
 
     const username = userData ? userData.username : '';
+
     const dbPlaylistData = await Playlist.findAll({
       order: [['rating', 'DESC']],
       limit: 10,
-      // where: { user_id: req.session.userId },
     });
     const playlists = dbPlaylistData.map((playlist) => playlist.get({ plain: true }));
+
     res.render('homepage', {
       // playlists,
       songs: songs,
