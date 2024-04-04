@@ -17,7 +17,7 @@ router.post('/', withAuth, async (req, res) => {
       rating: req.body.rating,
       user_id: req.session.userId,
     });
-    res.status(200).json(newPlaylist);
+    res.status(201).json(newPlaylist);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

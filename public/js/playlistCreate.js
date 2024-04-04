@@ -61,9 +61,12 @@ const newFormHandler = async (event) => {
       });
 
       if (response.ok) {
-        console.log(response);
-        // Redirects the user to their user page after successful playlist creation
-        document.location.replace('/');
+        
+        const data = await response.json();
+
+        console.log('playlist id', data.id);
+
+        
       } else {
         alert('Failed to create playlist');
       }
