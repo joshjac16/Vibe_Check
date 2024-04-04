@@ -25,14 +25,12 @@ router.get('/', async (req, res) => {
 
     const songs = dbSongData.map((song) => song.get({ plain: true }));
 
-    
     const dbMoreSongData = await SongLib.findAll({
       attributes: ['song', 'artist', 'album', 'rating'],
       order: [['song', 'ASC']],
     });
 
     const moreSongs = dbMoreSongData.map((song) => song.get({ plain: true }));
-
 
     const userData = await User.findByPk(req.session.userId, {
       attributes: ['username'],
@@ -50,8 +48,7 @@ router.get('/', async (req, res) => {
 
     let userPlaylists;
 
-    if(req.session.userId > 0) {
-
+    if (req.session.userId > 0) {
       const dbUserPlaylistData = await Playlist.findAll({
         where: {
           user_id: req.session.userId,
@@ -59,9 +56,8 @@ router.get('/', async (req, res) => {
         order: [['id', 'DESC']],
       });
       userPlaylists = dbUserPlaylistData.map((userMadePlaylist) =>
-      userMadePlaylist.get({ plain: true })
+        userMadePlaylist.get({ plain: true })
       );
-
     } else {
       userPlaylists = [];
     }
@@ -150,8 +146,8 @@ router.get('/song/:id', withAuth, async (req, res) => {
       album: songData.album,
       rating: songData.rating,
       loggedIn: req.session.loggedIn,
-    })
-  } catch(err) {
+    });
+  } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
