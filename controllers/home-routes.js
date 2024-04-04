@@ -28,9 +28,17 @@ router.get('/', async (req, res) => {
     });
 
     const username = userData ? userData.username : '';
-    const playlists = await Playlist.findAll({
-      // where: { user_id: req.session.userId },
-    });
+    
+    let playlists;
+
+    if(Number.isFinite(req.session.userId)){
+      playlists = await Playlist.findAll({
+        where: { user_id: req.session.userId },
+      });
+    } else {
+      playlists = await Playlist.findAll();
+    }
+    
     res.render('homepage', {
       // playlists,
       songs: songs,
