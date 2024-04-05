@@ -64,9 +64,9 @@ We also used ChatGPT to create dummy data.
 
 You can contact us here if you have questions:
 
-Github: []()
+Github: [Joshua Jacob](https://github,com/joshjac16)
 
-Email: []()
+Email: [josh11jac16@gmial.com](mailto:josh11jac16@gmail.com)
 
 Github: [AaronH-o](https://github.com/AaronH-o)
 
