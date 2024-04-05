@@ -503,6 +503,55 @@ body {
   stroke-dasharray: 45.16 0 45.16 54.19;
   transition-timing-function: steps(1, start), var(--trans-timing);
 }
+.card {
+  padding: 100px;
+  border-radius: 50px;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+.card li {
+  min-width: 400px;
+}
+.scroller {
+  padding-top: 150px;
+  max-width: 1280px;
+  outline: 3px solid lime;
+}
+.scroller__inner-wrapper {
+  padding: 1rem 0;
+  display: flex;
+  gap: 4rem;
+}
+.scroller__inner {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+.scroller__inner a {
+  max-width: 100%;
+}
+.scroller[data-animated="true"] {
+  overflow: hidden;
+  --webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+.scroller[data-animated="true"] .scroller__inner {
+  flex-wrap: nowrap;
+  animation: scroll var(--_animation-duratoin, 100s) var(--_animation-direction, forwards) linear infinite;
+}
+.scroller[data-animated="true"]:hover .scroller__inner {
+  animation-play-state: paused;
+}
+.scroller[data-duration="fast"] {
+  --_animation-duratoin: 40s;
+}
+@keyframes scroll {
+  to {
+    transform: translate(-1880px);
+  }
+}
+
 
 @media screen and (max-width: 500px) {
   body,
