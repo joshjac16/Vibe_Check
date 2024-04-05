@@ -4,7 +4,7 @@ Playlist storage site
 
 ## Description
 
-tbd
+Vibe Check is a fullstack web application built with Node.js, Express, MySQL, and Handlebars that allows users to create and save custom playlists from a provided list of songs. User authentication is required to access and manage playlists.
 
 ## Table of Contents
 
@@ -30,15 +30,18 @@ tbd
 
 Here are some screeenshots of our application:
 
-[homepage]()
+![homepage](./assets/homepage-screenshot.png)
 
-[login modal]()
+![signup modal](./assets/signup-screenshot.png)
 
-[User page]()
+![User page](./assets/userPage-screenshot.png)
 
-[Playlist]()
+![Playlist](./assets/playlist-screenshot.png)
 
-[Song example]()
+![Song example](./assets/songExample-screenshot.png)
+
+## Deployed Application
+The project is deployed at the following URL: [Vibe Check](https://vibe-check-student-app-d25fe2fb6a44.herokuapp.com/)
 
 ## Contributors
 
@@ -54,7 +57,7 @@ We used the following guides in building this application:
 
 [Password Validator code](https://www.codingayush.com/2023/05/password-validation-using-html-css.html)
 
-[]()
+[Carousel code](https://github.com/Dinil-Thilakarathne/ui-components/tree/main/carousel)
 
 []()
 
