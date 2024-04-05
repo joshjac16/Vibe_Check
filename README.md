@@ -54,7 +54,7 @@ We used the following guides in building this application:
 
 [Password Validator code](https://www.codingayush.com/2023/05/password-validation-using-html-css.html)
 
-[]()
+[Carousel code](https://github.com/Dinil-Thilakarathne/ui-components/tree/main/carousel)
 
 []()
 
