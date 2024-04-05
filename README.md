@@ -4,7 +4,7 @@ Playlist storage site
 
 ## Description
 
-tbd
+Vibe Check is a fullstack web application built with Node.js, Express, MySQL, and Handlebars that allows users to create and save custom playlists from a provided list of songs. User authentication is required to access and manage playlists.
 
 ## Table of Contents
 
