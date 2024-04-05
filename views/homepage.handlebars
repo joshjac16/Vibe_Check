@@ -8,14 +8,19 @@
 </section>
 {{/if}}
 
-<section class="playlists">
-  {{#each playlists as |playlist|}}
-  {{> top-rated-playlist}}
-  {{/each}}
-</section>
-
-<section class="songs">
+<div class="scroller " data-duration="fast">
+      <div class="scroller__inner-wrapper">
+        {{#each playlists as |playlist|}}
+        {{> top-rated-playlist}}
+        {{/each}}
+      </div>
+    </div>
+<div class = "scroller" data-duration="fast">
+<div class="scroller__inner-wrapper">
   {{#each songs as |song|}}
   {{> top-rated-song}}
   {{/each}}
-</section>
+</div>
+</div>   
+
+

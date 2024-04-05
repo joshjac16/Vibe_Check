@@ -3,31 +3,31 @@ const dayjs = require('dayjs');
 const withAuth = require('../utils/auth');
 const { Playlist, Song, User, SongLib } = require('../models');
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const dbSongData = await SongLib.findAll({
-      attributes: ['id', 'song', 'artist', 'album', 'rating'],
-      order: [['rating', 'DESC']],
+      attributes: ["id", "song", "artist", "album", "rating"],
+      order: [["rating", "DESC"]],
       limit: 10,
     });
 
     const songs = dbSongData.map((song) => song.get({ plain: true }));
 
     const dbMoreSongData = await SongLib.findAll({
-      attributes: ['song', 'artist', 'album', 'rating'],
-      order: [['song', 'ASC']],
+      attributes: ["song", "artist", "album", "rating"],
+      order: [["song", "ASC"]],
     });
 
     const moreSongs = dbMoreSongData.map((song) => song.get({ plain: true }));
 
     const userData = await User.findByPk(req.session.userId, {
-      attributes: ['username'],
+      attributes: ["username"],
     });
 
-    const username = userData ? userData.username : '';
+    const username = userData ? userData.username : "";
 
     const dbPlaylistData = await Playlist.findAll({
-      order: [['rating', 'DESC']],
+      order: [["rating", "DESC"]],
       limit: 10,
     });
     const playlists = dbPlaylistData.map((playlist) =>
@@ -41,7 +41,7 @@ router.get('/', async (req, res) => {
         where: {
           user_id: req.session.userId,
         },
-        order: [['id', 'DESC']],
+        order: [["id", "DESC"]],
       });
       userPlaylists = dbUserPlaylistData.map((userMadePlaylist) =>
         userMadePlaylist.get({ plain: true })
@@ -64,7 +64,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/playlists', withAuth, async (req, res) => {
+router.get("/playlists", withAuth, async (req, res) => {
   try {
     const dbPlaylistData = await Playlist.findAll({
       where: {
@@ -78,7 +78,7 @@ router.get('/playlists', withAuth, async (req, res) => {
       playlists.get({ plain: true })
     );
 
-    res.render('homepage', {
+    res.render("homepage", {
       userName: dbUserName.username,
       playlists,
       loggedIn: req.session.loggedIn,
@@ -89,7 +89,7 @@ router.get('/playlists', withAuth, async (req, res) => {
   }
 });
 
-router.get('/playlist/:id', withAuth, async (req, res) => {
+router.get("/playlist/:id", withAuth, async (req, res) => {
   try {
     const dbPlaylistData = await Song.findAll({
       where: {
@@ -112,7 +112,7 @@ router.get('/playlist/:id', withAuth, async (req, res) => {
       'MMM D, YYYY h:mm:ssA'
     );
 
-    res.render('playlist', {
+    res.render("playlist", {
       playlist,
       isCreator,
       playlistCreation,
@@ -146,26 +146,26 @@ router.get('/song/:id', withAuth, async (req, res) => {
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
-  res.render('login');
+  res.render("login");
 });
 
-router.get('/signup', (req, res) => {
+router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
-  res.render('signup');
+  res.render("signup");
 });
 
-router.get('/logout', (req, res) => {
+router.get("/logout", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/login');
+    res.redirect("/login");
     return;
   }
-  res.render('login');
+  res.render("login");
 });
 
 module.exports = router;
