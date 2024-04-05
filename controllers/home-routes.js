@@ -1,6 +1,7 @@
-const router = require("express").Router();
-const withAuth = require("../utils/auth");
-const { Playlist, Song, User, SongLib } = require("../models");
+const router = require('express').Router();
+const dayjs = require('dayjs');
+const withAuth = require('../utils/auth');
+const { Playlist, Song, User, SongLib } = require('../models');
 
 router.get("/", async (req, res) => {
   try {
@@ -110,7 +111,7 @@ router.get("/playlist/:id", withAuth, async (req, res) => {
       },
     });
     const dbPlaylistName = await Playlist.findByPk(req.params.id);
-    console.log(typeof dbPlaylistData, dbPlaylistData);
+
     // creates a false boolean result for the creator of the playlist, then checks if the creator of theplayist's id matches the currently logged in user. If yes, then the user will be able to edit or delete the playlist.
     let isCreator = false;
     if (req.session.userId === dbPlaylistName.user_id) {
@@ -119,11 +120,15 @@ router.get("/playlist/:id", withAuth, async (req, res) => {
     const playlist = dbPlaylistData.map((playlist) =>
       playlist.get({ plain: true })
     );
-    console.log(playlist);
+
+    // you can use day.js on playlistCreation to change it to a date format you'd like!
+    let playlistCreation = dbPlaylistName.createdAt;
+    playlistCreation = dayjs().format('MMM D, YYYY h:mm:ssA');
 
     res.render("playlist", {
       playlist,
       isCreator,
+      playlistCreation,
       playlistTitle: dbPlaylistName.title,
       playlistId: dbPlaylistName.id,
       playlistRating: dbPlaylistName.rating,
@@ -135,7 +140,24 @@ router.get("/playlist/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get("/login", (req, res) => {
+router.get('/song/:id', withAuth, async (req, res) => {
+  try {
+    const songData = await Song.findByPk(req.params.id);
+
+    res.render('song', {
+      song: songData.song,
+      artist: songData.artist,
+      album: songData.album,
+      rating: songData.rating,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
     return;
