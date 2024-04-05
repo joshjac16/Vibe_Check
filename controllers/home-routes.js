@@ -1,47 +1,45 @@
-const router = require('express').Router();
-const withAuth = require('../utils/auth');
-const { Playlist, Song, User, SongLib } = require('../models');
+const router = require("express").Router();
+const withAuth = require("../utils/auth");
+const { Playlist, Song, User, SongLib } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
-    const dbPlaylistData = await Playlist.findAll({
-      include: [
-        {
-          model: Song,
-          attributes: ["song", "artist", "album", "rating"],
-        },
-      ],
-    });
+    // const dbPlaylistData = await Playlist.findAll({
+    //   include: [
+    //     {
+    //       model: Song,
+    //       attributes: ["song", "artist", "album", "rating"],
+    //     },
+    //   ],
+    // });
 
-    const playlists = dbPlaylistData.map((playlist) =>
-      playlist.get({ plain: true })
-    );
+    // const playlists = dbPlaylistData.map((playlist) =>
+    //   playlist.get({ plain: true })
+    // );
 
     const dbSongData = await SongLib.findAll({
-      attributes: ['id', 'song', 'artist', 'album', 'rating'],
-      order: [['rating', 'DESC']],
+      attributes: ["id", "song", "artist", "album", "rating"],
+      order: [["rating", "DESC"]],
       limit: 10,
     });
 
     const songs = dbSongData.map((song) => song.get({ plain: true }));
 
-    
     const dbMoreSongData = await SongLib.findAll({
-      attributes: ['song', 'artist', 'album', 'rating'],
-      order: [['song', 'ASC']],
+      attributes: ["song", "artist", "album", "rating"],
+      order: [["song", "ASC"]],
     });
 
     const moreSongs = dbMoreSongData.map((song) => song.get({ plain: true }));
 
-
     const userData = await User.findByPk(req.session.userId, {
-      attributes: ['username'],
+      attributes: ["username"],
     });
 
-    const username = userData ? userData.username : '';
+    const username = userData ? userData.username : "";
 
     const dbPlaylistData = await Playlist.findAll({
-      order: [['rating', 'DESC']],
+      order: [["rating", "DESC"]],
       limit: 10,
     });
     const playlists = dbPlaylistData.map((playlist) =>
@@ -50,23 +48,21 @@ router.get("/", async (req, res) => {
 
     let userPlaylists;
 
-    if(req.session.userId > 0) {
-
+    if (req.session.userId > 0) {
       const dbUserPlaylistData = await Playlist.findAll({
         where: {
           user_id: req.session.userId,
         },
-        order: [['id', 'DESC']],
+        order: [["id", "DESC"]],
       });
       userPlaylists = dbUserPlaylistData.map((userMadePlaylist) =>
-      userMadePlaylist.get({ plain: true })
+        userMadePlaylist.get({ plain: true })
       );
-
     } else {
       userPlaylists = [];
     }
 
-    res.render('homepage', {
+    res.render("homepage", {
       // playlists,
       userPlaylists: userPlaylists,
       songs: songs,
@@ -95,7 +91,7 @@ router.get("/playlists", withAuth, async (req, res) => {
       playlists.get({ plain: true })
     );
 
-    res.render('homepage', {
+    res.render("homepage", {
       userName: dbUserName.username,
       playlists,
       loggedIn: req.session.loggedIn,
@@ -125,7 +121,7 @@ router.get("/playlist/:id", withAuth, async (req, res) => {
     );
     console.log(playlist);
 
-    res.render('playlist', {
+    res.render("playlist", {
       playlist,
       isCreator,
       playlistTitle: dbPlaylistName.title,
@@ -139,7 +135,7 @@ router.get("/playlist/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
     return;
