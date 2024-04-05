@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const dayjs = require('dayjs');
 const withAuth = require('../utils/auth');
 const { Playlist, Song, User, SongLib } = require('../models');
 
@@ -25,14 +26,12 @@ router.get('/', async (req, res) => {
 
     const songs = dbSongData.map((song) => song.get({ plain: true }));
 
-    
     const dbMoreSongData = await SongLib.findAll({
       attributes: ['song', 'artist', 'album', 'rating'],
       order: [['song', 'ASC']],
     });
 
     const moreSongs = dbMoreSongData.map((song) => song.get({ plain: true }));
-
 
     const userData = await User.findByPk(req.session.userId, {
       attributes: ['username'],
@@ -50,8 +49,7 @@ router.get('/', async (req, res) => {
 
     let userPlaylists;
 
-    if(req.session.userId > 0) {
-
+    if (req.session.userId > 0) {
       const dbUserPlaylistData = await Playlist.findAll({
         where: {
           user_id: req.session.userId,
@@ -59,9 +57,8 @@ router.get('/', async (req, res) => {
         order: [['id', 'DESC']],
       });
       userPlaylists = dbUserPlaylistData.map((userMadePlaylist) =>
-      userMadePlaylist.get({ plain: true })
+        userMadePlaylist.get({ plain: true })
       );
-
     } else {
       userPlaylists = [];
     }
@@ -114,7 +111,7 @@ router.get('/playlist/:id', withAuth, async (req, res) => {
       },
     });
     const dbPlaylistName = await Playlist.findByPk(req.params.id);
-    console.log(typeof dbPlaylistData, dbPlaylistData);
+
     // creates a false boolean result for the creator of the playlist, then checks if the creator of theplayist's id matches the currently logged in user. If yes, then the user will be able to edit or delete the playlist.
     let isCreator = false;
     if (req.session.userId === dbPlaylistName.user_id) {
@@ -123,11 +120,15 @@ router.get('/playlist/:id', withAuth, async (req, res) => {
     const playlist = dbPlaylistData.map((playlist) =>
       playlist.get({ plain: true })
     );
-    console.log(playlist);
+
+    // you can use day.js on playlistCreation to change it to a date format you'd like!
+    let playlistCreation = dbPlaylistName.createdAt;
+    playlistCreation = dayjs().format('MMM D, YYYY h:mm:ssA');
 
     res.render('playlist', {
       playlist,
       isCreator,
+      playlistCreation,
       playlistTitle: dbPlaylistName.title,
       playlistId: dbPlaylistName.id,
       playlistRating: dbPlaylistName.rating,
@@ -143,15 +144,14 @@ router.get('/song/:id', withAuth, async (req, res) => {
   try {
     const songData = await Song.findByPk(req.params.id);
 
-    console.log(songData);
     res.render('song', {
       song: songData.song,
       artist: songData.artist,
       album: songData.album,
       rating: songData.rating,
       loggedIn: req.session.loggedIn,
-    })
-  } catch(err) {
+    });
+  } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
