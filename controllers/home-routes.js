@@ -2,20 +2,20 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const { Playlist, Song, User, SongLib } = require('../models');
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    //   const dbPlaylistData = await Playlist.findAll({
-    //     include: [
-    //       {
-    //         model: Song,
-    //         attributes: ['song', 'artist', 'album', 'rating'],
-    //       },
-    //     ],
-    //   });
+    const dbPlaylistData = await Playlist.findAll({
+      include: [
+        {
+          model: Song,
+          attributes: ["song", "artist", "album", "rating"],
+        },
+      ],
+    });
 
-    //   const playlists = dbPlaylistData.map((playlist) =>
-    //     playlist.get({ plain: true })
-    //   );
+    const playlists = dbPlaylistData.map((playlist) =>
+      playlist.get({ plain: true })
+    );
 
     const dbSongData = await SongLib.findAll({
       attributes: ['id', 'song', 'artist', 'album', 'rating'],
@@ -81,7 +81,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/playlists', withAuth, async (req, res) => {
+router.get("/playlists", withAuth, async (req, res) => {
   try {
     const dbPlaylistData = await Playlist.findAll({
       where: {
@@ -106,7 +106,7 @@ router.get('/playlists', withAuth, async (req, res) => {
   }
 });
 
-router.get('/playlist/:id', withAuth, async (req, res) => {
+router.get("/playlist/:id", withAuth, async (req, res) => {
   try {
     const dbPlaylistData = await Song.findAll({
       where: {
@@ -139,46 +139,28 @@ router.get('/playlist/:id', withAuth, async (req, res) => {
   }
 });
 
-router.get('/song/:id', withAuth, async (req, res) => {
-  try {
-    const songData = await Song.findByPk(req.params.id);
-
-    console.log(songData);
-    res.render('song', {
-      song: songData.song,
-      artist: songData.artist,
-      album: songData.album,
-      rating: songData.rating,
-      loggedIn: req.session.loggedIn,
-    })
-  } catch(err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
-  res.render('login');
+  res.render("login");
 });
 
-router.get('/signup', (req, res) => {
+router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
-  res.render('signup');
+  res.render("signup");
 });
 
-router.get('/logout', (req, res) => {
+router.get("/logout", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/login');
+    res.redirect("/login");
     return;
   }
-  res.render('login');
+  res.render("login");
 });
 
 module.exports = router;

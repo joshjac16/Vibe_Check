@@ -12,10 +12,18 @@
   {{#each playlists as |playlist|}}
   {{> top-rated-playlist}}
   {{/each}}
-</section>
+</section> --}}
 
 <section class="songs">
   {{#each songs as |song|}}
   {{> top-rated-song}}
   {{/each}}
 </section>
+
+<div class="scroller " data-duration="fast">
+      <div class="scroller__inner-wrapper">
+        {{#each playlists as |playlist|}}
+        {{> top-rated-playlist}}
+        {{/each}}
+      </div>
+    </div>
