@@ -30,15 +30,18 @@ tbd
 
 Here are some screeenshots of our application:
 
-[homepage]()
+![homepage](./assets/homepage-screenshot.png)
 
-[login modal]()
+![signup modal](./assets/signup-screenshot.png)
 
-[User page]()
+![User page](./assets/userPage-screenshot.png)
 
-[Playlist]()
+![Playlist](./assets/playlist-screenshot.png)
 
-[Song example]()
+![Song example](./assets/songExample-screenshot.png)
+
+## Deployed Application
+The project is deployed at the following URL: [Vibe Check](https://vibe-check-student-app-d25fe2fb6a44.herokuapp.com/)
 
 ## Contributors
 
