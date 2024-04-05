@@ -5,19 +5,6 @@ const { Playlist, Song, User, SongLib } = require('../models');
 
 router.get('/', async (req, res) => {
   try {
-    //   const dbPlaylistData = await Playlist.findAll({
-    //     include: [
-    //       {
-    //         model: Song,
-    //         attributes: ['song', 'artist', 'album', 'rating'],
-    //       },
-    //     ],
-    //   });
-
-    //   const playlists = dbPlaylistData.map((playlist) =>
-    //     playlist.get({ plain: true })
-    //   );
-
     const dbSongData = await SongLib.findAll({
       attributes: ['id', 'song', 'artist', 'album', 'rating'],
       order: [['rating', 'DESC']],
@@ -64,7 +51,6 @@ router.get('/', async (req, res) => {
     }
 
     res.render('homepage', {
-      // playlists,
       userPlaylists: userPlaylists,
       songs: songs,
       moreSongs: moreSongs,
@@ -122,8 +108,9 @@ router.get('/playlist/:id', withAuth, async (req, res) => {
     );
 
     // you can use day.js on playlistCreation to change it to a date format you'd like!
-    let playlistCreation = dbPlaylistName.createdAt;
-    playlistCreation = dayjs().format('MMM D, YYYY h:mm:ssA');
+    let playlistCreation = dayjs(dbPlaylistName.createdAt).format(
+      'MMM D, YYYY h:mm:ssA'
+    );
 
     res.render('playlist', {
       playlist,
