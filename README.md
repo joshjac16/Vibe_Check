@@ -18,15 +18,15 @@ Vibe Check is a fullstack web application built with Node.js, Express, MySQL, an
 
 ## Introduction
 
-tbd
+Our app is a music playlist and rating website that allows a user to create an account and then create playlists from a list of popular music.
 
 ## Problem
 
-tbd
+We wanted to make a site that lets us create playlists, share them and get introduced to other user’s playlists, because as an avid music connoisseur, we want to expand our exposure to new music so that we can listen to new music that is similar to our current tastes but are as yet unknown to us.
 
 ## Solution
 
-tbd
+We created an application that allows for playlist creation and rating, by users that are logged in. Future functionality should include the ability to edit a created playlist, coneection to an outside API for an expansive song list, and a music player.
 
 Here are some screeenshots of our application:
 
@@ -45,7 +45,7 @@ The project is deployed at the following URL: [Vibe Check](https://vibe-check-st
 
 ## Contributors
 
-Aaron Ho, Joshua Jacob, and Keegan Royal-Eisenberg workde on this project together.
+Aaron Ho, Joshua Jacob, and Keegan Royal-Eisenberg worked on this project together.
 
 We used phind.com to help with debugging.
 
@@ -58,8 +58,6 @@ We used the following guides in building this application:
 [Password Validator code](https://www.codingayush.com/2023/05/password-validation-using-html-css.html)
 
 [Carousel code](https://github.com/Dinil-Thilakarathne/ui-components/tree/main/carousel)
-
-[]()
 
 We also used ChatGPT to create dummy data.
 
