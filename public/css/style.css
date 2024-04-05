@@ -509,7 +509,13 @@ body {
   width: 200px;
   height: 200px;
   overflow: hidden;
+  background-color: var(--accent);
 }
+
+.card header {
+  color: var(--text);
+}
+
 .card li {
   min-width: 400px;
 }
@@ -531,19 +537,26 @@ body {
 .scroller__inner a {
   max-width: 100%;
 }
-.scroller[data-animated="true"] {
+.scroller[data-animated='true'] {
   overflow: hidden;
-  --webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  --webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
   mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
 }
-.scroller[data-animated="true"] .scroller__inner {
+.scroller[data-animated='true'] .scroller__inner {
   flex-wrap: nowrap;
-  animation: scroll var(--_animation-duratoin, 100s) var(--_animation-direction, forwards) linear infinite;
+  animation: scroll var(--_animation-duratoin, 100s)
+    var(--_animation-direction, forwards) linear infinite;
 }
-.scroller[data-animated="true"]:hover .scroller__inner {
+.scroller[data-animated='true']:hover .scroller__inner {
   animation-play-state: paused;
 }
-.scroller[data-duration="fast"] {
+.scroller[data-duration='fast'] {
   --_animation-duratoin: 40s;
 }
 @keyframes scroll {
@@ -551,7 +564,6 @@ body {
     transform: translate(-1880px);
   }
 }
-
 
 @media screen and (max-width: 500px) {
   body,
