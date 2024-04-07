@@ -513,11 +513,54 @@ body {
 
 .card header {
   color: var(--text);
+  width: 100%;
+  word-wrap: break-word;
+  margin: 0;
+  padding: 0;
 }
 
-.card li {
-  min-width: 400px;
+.header-playlist .header-song .user-header-playlist {
+  width: 100%;
+  word-wrap: break-word;
+  position: relative;
+  margin: 0;
+  display: flex;
 }
+
+.user-card {
+  display: flex;
+  align-items: start !important;
+}
+
+/* .user-header-playlist {
+  display: flex;
+  flex-wrap: wrap;
+  width: 25% !important;
+  word-wrap: break-word;
+  position: relative;
+  top: -45px;
+  left: -40px;
+  margin: 0 !important;
+} */
+
+.card li {
+  min-width: 170px;
+  min-height: 170px;
+  top: -85px;
+  left: -85px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+ul,
+ol {
+  list-style-type: none;
+  padding-left: 0; /* Optional, removes default list indentation */
+}
+
 .scroller {
   padding-top: 150px;
   max-width: 1280px;
