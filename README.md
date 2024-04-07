@@ -41,6 +41,7 @@ Here are some screeenshots of our application:
 ![Song example](./assets/songExample-screenshot.png)
 
 ## Deployed Application
+
 The project is deployed at the following URL: [Vibe Check](https://vibe-check-student-app-d25fe2fb6a44.herokuapp.com/)
 
 ## Contributors
@@ -58,6 +59,8 @@ We used the following guides in building this application:
 [Password Validator code](https://www.codingayush.com/2023/05/password-validation-using-html-css.html)
 
 [Carousel code](https://github.com/Dinil-Thilakarathne/ui-components/tree/main/carousel)
+
+[NetNinja Responsive Design tutorials on Youtube (burgernav)](https://www.youtube.com/watch?v=3tLb3i7GB38&list=PL4cUxeGkcC9g9Vh9MAA-XKnfJsWZnPZFw&ab_channel=NetNinja)
 
 We also used ChatGPT to create dummy data.
 
