@@ -1,17 +1,19 @@
-<section class='songs' id="playlist">
-    <p id="playlist-title">Playlist: {{ playlistTitle }}</p>
+<div class="playlist">
+  <section class='songs' id="playlist">
+    <p class="fs-3" id="playlist-title">{{ playlistTitle }}</p>
     <p>Playlist rating: {{playlistRating}}</p>
     <p>Date created: {{playlistCreation}}</p>
-  {{#each playlist as |playlist|}}
-    {{> user-playlist}}
-  {{/each}}
+    {{#each playlist as |playlist|}}
+      {{> user-playlist}}
+    {{/each}}
   {{#if isCreator}}
   <div class='row'>
-    <div class='col-md-1'>
-      <button class='btn btn-sm btn-danger' data-id='{{playlistId}}'>DELETE</button>
+    <div class='d-grid col-12 mx-auto'>
+      <button class='btn my-5 btn-sm btn-danger' data-id='{{playlistId}}'>DELETE</button>
     </div>
   </div>
-{{/if}}
-</section>
+  {{/if}}
+  </section>
+</div>
 <script src='/js/playlistShowInfo.js'></script>
 <script src='/js/playlistDelete.js'></script>

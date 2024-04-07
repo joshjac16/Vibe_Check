@@ -26,6 +26,22 @@
 body {
   background-color: var(--background);
   color: var(--text);
+  padding: 10px;
+}
+
+.logo {
+  position: absolute;
+  top: 1px;
+}
+
+.welcome {
+  position: absolute;
+  margin-left: 125px;
+  margin-top: -16px;
+}
+
+.padding-div {
+  padding: 20px 0px 0px 30px;
 }
 
 .accent {
@@ -34,6 +50,7 @@ body {
 
 .navbar {
   background-color: var(--background);
+  min-height: 160px;
 }
 
 .nav-item {
@@ -525,6 +542,19 @@ body {
   position: relative;
   margin: 0;
   display: flex;
+}
+
+.playlist {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+  justify-content: center;
+}
+
+.playlists {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
 }
 
 .user-card {
