@@ -41,7 +41,6 @@ body {
   padding: 6px;
   margin: 10px;
   border-radius: 25px;
-  /* Box shadow to create depth */
   box-shadow: inset -6px -4px 10px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -62,7 +61,6 @@ body {
   padding: 28px;
   border-radius: 8px;
   background: #fff;
-  /* Box shadow to create depth */
   box-shadow: inset -6px -4px 10px 4px rgba(0, 0, 0, 0.2);
 }
 .wrapper .user-field {
@@ -204,7 +202,7 @@ body {
   transform: translateY(-50%);
 }
 
-/* CSS for star rating system */
+/* Star rating system */
 .star {
   cursor: pointer;
   color: gray;
@@ -248,7 +246,7 @@ body {
   color: #999;
 }
 
-/* button shimmer off */
+/* Button shimmer off */
 .shimmering-btn-def {
   border: none;
   padding: 0.5rem 1rem;
@@ -272,7 +270,7 @@ body {
   background-repeat: no-repeat;
 }
 
-/* button shimmer on */
+/* Button shimmer on */
 .shimmering-button {
   border: none;
   padding: 0.5rem 1rem;
@@ -304,8 +302,7 @@ body {
   transition: background-position-x 1000ms;
 }
 
-/* dark mode switch */
-
+/* Dark mode switch */
 .message-overlay {
   position: absolute;
   top: 14px;
@@ -503,6 +500,8 @@ body {
   stroke-dasharray: 45.16 0 45.16 54.19;
   transition-timing-function: steps(1, start), var(--trans-timing);
 }
+
+/* Scrolling cards */
 .card {
   padding: 100px;
   border-radius: 50px;
@@ -514,11 +513,54 @@ body {
 
 .card header {
   color: var(--text);
+  width: 100%;
+  word-wrap: break-word;
+  margin: 0;
+  padding: 0;
 }
 
-.card li {
-  min-width: 400px;
+.header-playlist .header-song .user-header-playlist {
+  width: 100%;
+  word-wrap: break-word;
+  position: relative;
+  margin: 0;
+  display: flex;
 }
+
+.user-card {
+  display: flex;
+  align-items: start !important;
+}
+
+/* .user-header-playlist {
+  display: flex;
+  flex-wrap: wrap;
+  width: 25% !important;
+  word-wrap: break-word;
+  position: relative;
+  top: -45px;
+  left: -40px;
+  margin: 0 !important;
+} */
+
+.card li {
+  min-width: 170px;
+  min-height: 170px;
+  top: -85px;
+  left: -85px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+ul,
+ol {
+  list-style-type: none;
+  padding-left: 0; /* Optional, removes default list indentation */
+}
+
 .scroller {
   padding-top: 150px;
   max-width: 1280px;
@@ -565,6 +607,7 @@ body {
   }
 }
 
+/* Responsiveness */
 @media screen and (max-width: 500px) {
   body,
   .wrapper {
