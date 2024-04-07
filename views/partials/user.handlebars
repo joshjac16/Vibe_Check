@@ -37,14 +37,50 @@
           <ul id='temporary-playlist'></ul>
         </div>
         <!-- Star rating system -->
-        <div class='form-group'>
+        <div class='form-group' id='stars'>
           <label for='playlist-rating'>Rating:</label>
-          <div id='playlist-rating' class='rating'>
+          {{! <div id='playlist-rating' class='rating'>
             <span class='star' data-value='1'>&#9733;</span>
             <span class='star' data-value='2'>&#9733;</span>
             <span class='star' data-value='3'>&#9733;</span>
             <span class='star' data-value='4'>&#9733;</span>
             <span class='star' data-value='5'>&#9733;</span>
+          </div> }}
+          <div id='playlist-rating' class='star-rating'>
+            <div class='stars'>
+              <label class='number' id='revert'><input
+                  type='radio'
+                  name='rating'
+                  value='0'
+                /></label>
+              <label class='star'><input
+                  type='radio'
+                  name='rating'
+                  data-value='1'
+                /></label>
+              <label class='star'><input
+                  type='radio'
+                  name='rating'
+                  data-value='2'
+                /></label>
+              <label class='star'><input
+                  type='radio'
+                  name='rating'
+                  data-value='3'
+                  checked
+                /></label>
+              <label class='star'><input
+                  type='radio'
+                  name='rating'
+                  data-value='4'
+                /></label>
+              <label class='star'><input
+                  type='radio'
+                  name='rating'
+                  data-value='5'
+                /></label>
+              <div class='number-rating'></div>
+            </div>
           </div>
         </div>
         <div class='form-group'>
