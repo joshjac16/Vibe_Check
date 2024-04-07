@@ -1,11 +1,12 @@
 {{#if loggedIn}}
-{{> user}}
-
-<section class="playlists">
-  {{#each userPlaylists as |userPlaylist|}}
-  {{> user-playlists}}
-  {{/each}}
-</section>
+  {{> user}}
+  <div class="padding-div">
+    <section class="playlists">
+      {{#each userPlaylists as |userPlaylist|}}
+        {{> user-playlists}}
+      {{/each}}
+    </section>
+  </div>
 {{/if}}
 
 <div class="scroller " data-duration="fast">
