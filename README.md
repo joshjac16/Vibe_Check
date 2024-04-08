@@ -72,7 +72,7 @@ You can contact us here if you have questions:
 
 Github: [Joshua Jacob](https://github,com/joshjac16)
 
-Email: [josh11jac16@gmial.com](mailto:josh11jac16@gmail.com)
+Email: [josh11jac16@gmail.com](mailto:josh11jac16@gmail.com)
 
 Github: [AaronH-o](https://github.com/AaronH-o)
 
