@@ -60,6 +60,8 @@ We used the following guides in building this application:
 
 [Carousel code](https://github.com/Dinil-Thilakarathne/ui-components/tree/main/carousel)
 
+[Star rating visuals](https://www.codewithfaraz.com/content/313/create-stunning-star-ratings-html-and-css-tutorial)
+
 [NetNinja Responsive Design tutorials on Youtube (burgernav)](https://www.youtube.com/watch?v=3tLb3i7GB38&list=PL4cUxeGkcC9g9Vh9MAA-XKnfJsWZnPZFw&ab_channel=NetNinja)
 
 We also used ChatGPT to create dummy data.
