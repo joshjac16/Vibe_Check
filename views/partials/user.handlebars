@@ -1,98 +1,99 @@
 {{#if loggedIn}}
-  <section class='welcome'>
-    <p>What's good {{username}}?</p>
-  </section>
+  <div class='container-fluid'>
+    <div class='justify-content-center'>
+      <section class='welcome'>
+        <p>What's good {{username}}?</p>
+      </section>
 
-  <div class='row mt-4'>
-    <div class='col-md-6'>
-      <h3>Create a New Playlist:</h3>
+      <div class='col-md-6 mt-4'>
+        <h3>Create a New Playlist:</h3>
 
-      <form class='form new-playlist-form'>
-        <div class='form-group'>
-          <label for='playlist-name'>Playlist title:</label>
-          <input
-            class='form-input'
-            type='text'
-            id='playlist-title'
-            name='playlist-title'
-          />
-        </div>
-        <div class='form-group'>
-          <label for='playlist-body'>Playlist songs:</label>
-          <select class='form-input' id='playlist-songs' name='playlist-songs'>
-            {{#each moreSongs}}
-              <option
-                value='{{this.song}}-{{this.artist}}-{{this.album}}-{{this.rating}}'
-              >{{this.song}}
-                -
-                {{this.artist}}
-                -
-                {{this.album}}</option>
-            {{/each}}
-          </select>
-          <!-- Button to add selected song to temporary playlist -->
-          <button id='add-song-btn' class='btn btn-success'>Add Song</button>
+        <form class='form new-playlist-form'>
+          <div class='form-group'>
+            <label for='playlist-name'>Playlist title:</label>
+            <input
+              class='form-input'
+              type='text'
+              id='playlist-title'
+              name='playlist-title'
+            />
+          </div>
+          <div class='form-group'>
+            <div class='playlist-selection'>
+              <div id='name-of-list'>
+                <label for='playlist-body'>Playlist songs:</label>
+              </div>
+              <div>
+                <select
+                  class='select'
+                  id='playlist-songs'
+                  name='playlist-songs'
+                >
+                  {{#each moreSongs}}
+                    <option
+                      value='{{this.song}}-{{this.artist}}-{{this.album}}-{{this.rating}}'
+                    >{{this.artist}} - "{{this.song}}"</option>
+                  {{/each}}
+                </select>
+              </div>
+            </div>
+            <!-- Button to add selected song to temporary playlist -->
+            <button id='add-song-btn' class='btn btn-success'>Add Song</button>
 
-          <!-- Display temporary playlist -->
-          <ul id='temporary-playlist'></ul>
-        </div>
-        <!-- Star rating system -->
-        <div class='form-group' id='stars'>
-          <label for='playlist-rating'>Rating:</label>
-          {{! <div id='playlist-rating' class='rating'>
-            <span class='star' data-value='1'>&#9733;</span>
-            <span class='star' data-value='2'>&#9733;</span>
-            <span class='star' data-value='3'>&#9733;</span>
-            <span class='star' data-value='4'>&#9733;</span>
-            <span class='star' data-value='5'>&#9733;</span>
-          </div> }}
-          <div id='playlist-rating' class='star-rating'>
-            <div class='stars'>
-              <label class='number' id='revert'><input
-                  type='radio'
-                  name='rating'
-                  value='0'
-                /></label>
-              <label class='star'><input
-                  type='radio'
-                  name='rating'
-                  data-value='1'
-                /></label>
-              <label class='star'><input
-                  type='radio'
-                  name='rating'
-                  data-value='2'
-                /></label>
-              <label class='star'><input
-                  type='radio'
-                  name='rating'
-                  data-value='3'
-                  checked
-                /></label>
-              <label class='star'><input
-                  type='radio'
-                  name='rating'
-                  data-value='4'
-                /></label>
-              <label class='star'><input
-                  type='radio'
-                  name='rating'
-                  data-value='5'
-                /></label>
-              <div class='number-rating'></div>
+            <!-- Display temporary playlist -->
+            <ul id='temporary-playlist'></ul>
+          </div>
+          <!-- Star rating system -->
+          <div class='form-group' id='stars'>
+            <label for='playlist-rating'>Rating:</label>
+            <div id='playlist-rating' class='star-rating'>
+              <div class='stars'>
+                <label class='number starRevert' id='revert'><input
+                    type='radio'
+                    name='rating'
+                    value='0'
+                  /></label>
+                <label class='star'><input
+                    type='radio'
+                    name='rating'
+                    data-value='1'
+                  /></label>
+                <label class='star'><input
+                    type='radio'
+                    name='rating'
+                    data-value='2'
+                  /></label>
+                <label class='star'><input
+                    type='radio'
+                    name='rating'
+                    data-value='3'
+                    checked
+                  /></label>
+                <label class='star'><input
+                    type='radio'
+                    name='rating'
+                    data-value='4'
+                  /></label>
+                <label class='star'><input
+                    type='radio'
+                    name='rating'
+                    data-value='5'
+                  /></label>
+                <div class='number-rating'></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class='form-group'>
-          <button type='submit' class='btn btn-primary'>Bussin'!</button>
-        </div>
-        <input
-          type='hidden'
-          id='playlist-rating-input'
-          name='playlist-rating-input'
-          value='0'
-        />
-      </form>
+          <div class='form-group'>
+            <button type='submit' class='btn btn-primary'>Bussin'!</button>
+          </div>
+          <input
+            type='hidden'
+            id='playlist-rating-input'
+            name='playlist-rating-input'
+            value='0'
+          />
+        </form>
+      </div>
     </div>
   </div>
 {{/if}}
